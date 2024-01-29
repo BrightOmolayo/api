@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <img src="#" alt="africa">
+ <button id="refreshbtn">next</button>
+  <script>
+    const img = document.querySelector('img');
+    fetch('https://api.giphy.com/v1/gifs/translate?api_key=OPQ40UPzNNpk0gOkzNCIG5pZbmgntLrY&s=africa', {mode: 'cors'})
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(response){
+        img.src = response.data.images.original.url;
+    });
+
+    document.getElementById('refreshbtn').addEventListener('click',function(){
+        location.reload();
+    })
+  </script>
+</body>
+</html>
